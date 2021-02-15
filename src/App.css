@@ -1,38 +1,124 @@
 .App {
-  text-align: center;
+    background-color: #f2f2f2;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login {
+    text-align: center;
+    height: auto;
+    padding-top: 200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.login .login-card {
+    width: 40%;
+    margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.login .p-inputtext {
+    width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.margin-auto {
+    margin: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.m-t-10 {
+    margin-top: 10px !important;
+}
+
+.color-red {
+    color: red;
+}
+
+.login .p-button {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.p-b-10 {
+    padding-bottom: 10px;
+}
+
+.m-r-10 {
+    margin-right: 10px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-10 {
+    margin: 10px !important;
+}
+
+.header-div .p-card .p-card-body {
+    height: 60px;
+    padding: 0px !important;
+}
+
+.header-div .p-card .p-card-content {
+    padding: 10px !important;
+}
+
+.logout {
+    float: right;
+    margin-right: 20px;
+}
+
+.jobs-div {
+    margin-top: 20px !important;
+    width: 85% !important;
+    margin: auto;
+    padding: 20px;
+}
+
+.jobs-div .create-btn {
+    width: 10%;
+    margin-left: auto;
+}
+
+.create-job {
+    font-size: 14px;
+}
+
+.create-job .p-inputtext {
+    width: 85%;
+}
+
+.p-dialog .p-dialog-header {
+    background-color: rgb(95, 93, 93) !important;
+    color: white !important;
+}
+
+.p-dialog {
+    width: 40%;
+}
+
+.create-job .p-calendar {
+    width: 85%;
+}
+
+.p-dialog .p-dialog-content {
+    padding: 10px !important;
+}
+
+.p-datepicker table td {
+    padding: 0px !important;
+}
+
+.p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+    width: 100%;
+    padding: 10px;
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon {
+    color: white !important;
+}
+
+.save-btn {
+    float: right !important;
+    margin-top: 10px !important;
+    margin-right: 20px !important;
 }
