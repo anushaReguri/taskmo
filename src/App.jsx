@@ -10,11 +10,9 @@ import User from './pages/UserDashboard.jsx'
 import Header from './pages/Header.jsx'
 
 function App() {
+  
   const Routing = () => {
-    
     const isLoggedin = JSON.parse(localStorage.getItem('isLoggedin'));
-   
-
     if (!isLoggedin) return  <Route exact path='/' component={Login}></Route>
     return<div>
       <Header/>
@@ -22,6 +20,7 @@ function App() {
    <Route exact path='/user' component={User}></Route>
    </div>
 };
+
   return (
     <div className="App">
      <BrowserRouter>

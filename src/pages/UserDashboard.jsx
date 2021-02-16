@@ -1,10 +1,11 @@
-import React ,{useState} from 'react'
+import React ,{useState,useEffect} from 'react'
 import Jobs from './Jobs';
 import { Button } from 'primereact/button';
 import { FileUpload } from 'primereact/fileupload';
 import { ConfirmDialog } from 'primereact/confirmdialog'; 
 import { InputText } from 'primereact/inputtext';
 import Applications from './Applications.jsx'
+import Task from './Task';
 
 function UserDashboard() {
     let  savedJobs= JSON.parse(localStorage.getItem('jobs'));
@@ -15,6 +16,24 @@ function UserDashboard() {
     const [state, setState] = useState({showModal:false,name:'', fileName:''});
     const [fileUploader, setFileUploader] = useState('');
 
+    useEffect(() => {
+     fetch('http://103.212.121.222:3000/task/test/report').then(resp=> resp.json())
+     .then(data=>  {
+      let tasks=[];
+       if(data&&data?.task_answers){
+        data.task_answers.forEach(item=>{
+          let task={};
+          item.answer.forEach((ans)=>{
+task[ans.question]= ans.answer;
+})
+tasks.push({...task,task_id:item.task_id,user_id:item.user_id});
+        })
+       }
+       let questions=       data.task_questions.map(que=> que.question  )
+       setState({...state,tasks:tasks,questions:questions})
+     }     ).catch(err=> setState({...state,error:err}))
+    }, [])
+    
     const addButton=(rec)=>{        
       return  <Button label="Apply" disabled={new Date(rec.expiryDate) <= new Date()} onClick={()=> setState({...state,showModal:true, selectedJob:rec})} />
     }
@@ -66,7 +85,7 @@ function UserDashboard() {
 
   return (
     <div>
-         <div className="card jobs-div">
+      {state.error? <div>{state.error}</div>:   <div className="card jobs-div">
              <div className='p-b-10'>
          <Jobs jobs={jobs} addButton={addButton} type='user'/>
          </div>
@@ -82,7 +101,8 @@ function UserDashboard() {
               />
               <b>Your Job Applications</b>
               <Applications applications={applications}/>
-            </div>
+              <Task tasks={state.tasks} questions={state.questions}/>
+            </div>}
     </div>
   )
 }
